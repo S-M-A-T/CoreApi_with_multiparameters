@@ -1,0 +1,49 @@
+The `Remove-Migration` command in Entity Framework Core does not have a `-Name` parameter. You can simply run `Remove-Migration` without any parameters to remove the last migration you created. Here’s how to do it:
+
+### Step 1: Remove the Last Migration
+
+1. In the Package Manager Console, execute the following command:
+
+   ```powershell
+   Remove-Migration
+   ```
+
+   This command will remove the last migration that was added.
+
+### Step 2: Confirm Removal
+
+You should see a message confirming that the migration has been removed. If you want to check the `Migrations` folder, you should see that the last migration file has been deleted.
+
+### Step 3: Create a New Migration
+
+Now you can create a new migration. Run:
+
+```powershell
+Add-Migration InitialCreate
+```
+
+or give it a different name if you prefer:
+
+```powershell
+Add-Migration NewMigrationName
+```
+
+### Step 4: Update the Database
+
+Once the migration is created successfully, you can apply it to your database:
+
+```powershell
+Update-Database
+```
+
+### Additional Notes
+
+- If you have already applied the migration to the database and you want to remove it, you need to roll back the migration first before removing it. You can do this with:
+
+  ```powershell
+  Update-Database -Migration <PreviousMigrationName>
+  ```
+
+- After rolling back, you can then run `Remove-Migration`.
+
+If you have any further questions or issues, feel free to ask!
